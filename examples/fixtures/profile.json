@@ -1,0 +1,11 @@
+{
+  "id": "demo-person",
+  "location": {"name": "North Harbor", "lat": 25.0000, "lon": 121.0000},
+  "skills": ["automation", "spreadsheet", "data cleanup", "translation"],
+  "capital_available": 400,
+  "currency": "USD",
+  "weekly_hours": 12,
+  "mobility_km": 15,
+  "equipment": ["laptop", "smartphone"],
+  "languages": ["english", "local-language"]
+}
