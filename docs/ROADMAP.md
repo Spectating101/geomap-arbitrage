@@ -12,7 +12,9 @@
 - [x] GeoJSON export
 - [x] Citation Engine decision/receipt/bundle integration
 - [x] synthetic three-state fixture: recommended / research / blocked
-- [ ] native GitHub CI green on Python 3.11 and 3.13
+- [x] persistent Citation Engine idempotence across JSONL reopen
+- [x] explicit no-authority-transition recommendation boundary
+- [x] native GitHub CI green on Python 3.11 and 3.13
 
 ## v0.2 — evidence adapters
 
@@ -27,6 +29,8 @@ Only after the seed is stable, add adapters that produce **candidate evidence**,
 - procurement/tender/grant demand where appropriate.
 
 Every adapter must preserve source locator, observation time, method, rights/terms constraints and confidence.
+
+For internal-only development, prefer existing portfolio data sources and committed fixtures before adding new external dependencies.
 
 ## v0.3 — encyclopedia compiler
 
