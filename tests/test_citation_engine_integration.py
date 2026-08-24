@@ -32,6 +32,7 @@ def test_recommendation_emits_decision_receipt_and_bundle_without_authority_tran
     assert trace["bundleSchema"] == "citation-engine.bundle.v1"
     assert trace["bundleObjectCount"] >= 10
     assert trace["authorityTransition"] is None
+    assert all(obj["type"] != "AuthorityTransition" for obj in trace["bundle"]["objects"])
 
 
 def test_persistent_trace_is_idempotent_and_does_not_expose_store_path(monkeypatch, tmp_path):
