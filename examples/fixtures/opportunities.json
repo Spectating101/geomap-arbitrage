@@ -1,0 +1,115 @@
+{
+  "fixture": true,
+  "warning": "Synthetic demonstration data only. These are not live market opportunities.",
+  "opportunities": [
+    {
+      "id": "north-harbor-catalog-cleanup",
+      "archetype_id": "local-service-gap",
+      "title": "Small-business catalog and spreadsheet cleanup",
+      "thesis": "Small merchants have recurring catalog/data-maintenance work that is too small for agencies but valuable enough to buy as a fixed-price local service.",
+      "category": "local-service-gap",
+      "location": {"name": "North Harbor Market", "lat": 25.0100, "lon": 121.0100},
+      "service_radius_km": 10,
+      "remote": false,
+      "required_skills": ["spreadsheet", "automation"],
+      "helpful_skills": ["data cleanup", "translation"],
+      "required_equipment": ["laptop"],
+      "startup_capital": {"low": 80, "high": 150, "currency": "USD"},
+      "weekly_hours_required": 8,
+      "monthly_revenue": {"low": 700, "high": 1200, "currency": "USD"},
+      "monthly_cost": {"low": 150, "high": 300, "currency": "USD"},
+      "repeatability": 0.82,
+      "legal_status": "allowed",
+      "required_evidence_kinds": ["demand", "economics", "supply"],
+      "execution_steps": [
+        "Interview five merchants and collect examples of recurring catalog or spreadsheet pain.",
+        "Offer one narrow fixed-price cleanup package with before/after deliverables.",
+        "Complete two paid pilots and measure hours, revisions, acquisition cost, and repeat demand.",
+        "Productize the repeatable steps into templates or automation only after paid demand is observed."
+      ],
+      "failure_modes": [
+        "Merchant pain exists but willingness to pay is below the estimated range.",
+        "Work becomes bespoke and destroys hourly economics.",
+        "Customer acquisition takes longer than delivery."
+      ],
+      "metadata": {"synthetic_fixture": true},
+      "evidence": [
+        {"id":"nh-demand-1","kind":"demand","claim":"Synthetic merchant interview batch reports recurring catalog and spreadsheet maintenance pain.","source":"fixture:merchant-interviews-a","observed_at":"2026-08-10","confidence":0.82,"locator":"fixture://merchant-interviews-a","value":7,"unit":"interested_merchants","method":"observed"},
+        {"id":"nh-econ-1","kind":"economics","claim":"Synthetic paid-pilot ledger supports the declared fixed-price revenue and delivery-cost range.","source":"fixture:pilot-ledger-b","observed_at":"2026-08-12","confidence":0.78,"locator":"fixture://pilot-ledger-b","value":340,"unit":"median_job_value_usd","method":"observed"},
+        {"id":"nh-supply-1","kind":"supply","claim":"Synthetic directory sample shows few providers advertising small fixed-price catalog cleanup locally.","source":"fixture:provider-directory-c","observed_at":"2026-08-08","confidence":0.74,"locator":"fixture://provider-directory-c","value":3,"unit":"visible_competitors","method":"observed"}
+      ]
+    },
+    {
+      "id": "north-harbor-bilingual-storefront",
+      "archetype_id": "skill-gap-arbitrage",
+      "title": "Bilingual storefront and menu conversion",
+      "thesis": "A language-and-digitization skill gap may let a local operator convert offline storefront information into bilingual digital listings and menus.",
+      "category": "skill-gap",
+      "location": {"name": "North Harbor Station", "lat": 25.0150, "lon": 121.0050},
+      "service_radius_km": 12,
+      "remote": false,
+      "required_skills": ["translation"],
+      "helpful_skills": ["automation", "spreadsheet"],
+      "required_equipment": ["laptop", "smartphone"],
+      "startup_capital": {"low": 60, "high": 180, "currency": "USD"},
+      "weekly_hours_required": 7,
+      "monthly_revenue": {"low": 500, "high": 1000, "currency": "USD"},
+      "monthly_cost": {"low": 120, "high": 320, "currency": "USD"},
+      "repeatability": 0.70,
+      "legal_status": "unknown",
+      "required_evidence_kinds": ["demand", "economics", "regulation"],
+      "execution_steps": [
+        "Verify local business-listing, translation, tax, and invoicing requirements.",
+        "Collect ten storefront samples where bilingual information is absent or poor.",
+        "Pre-sell a bounded one-page/menu conversion package before automating delivery."
+      ],
+      "failure_modes": [
+        "Local merchants do not value bilingual conversion enough to pay.",
+        "Platform or local rules require registration not yet modeled.",
+        "Translation QA cost removes the price edge."
+      ],
+      "metadata": {"synthetic_fixture": true},
+      "evidence": [
+        {"id":"nh-bilingual-demand","kind":"demand","claim":"Synthetic storefront sample contains businesses with incomplete bilingual information.","source":"fixture:storefront-sample-d","observed_at":"2026-08-11","confidence":0.72,"locator":"fixture://storefront-sample-d","value":14,"unit":"incomplete_storefronts","method":"observed"},
+        {"id":"nh-bilingual-price","kind":"economics","claim":"Synthetic quote sample suggests a plausible service price range but has not been validated by paid pilots.","source":"fixture:quote-sample-e","observed_at":"2026-08-13","confidence":0.61,"locator":"fixture://quote-sample-e","value":180,"unit":"indicative_job_value_usd","method":"estimated"}
+      ]
+    },
+    {
+      "id": "north-harbor-appliance-resale",
+      "archetype_id": "geographic-resale-spread",
+      "title": "Used-appliance collection and resale route",
+      "thesis": "A local acquisition/resale price spread may exist for working used appliances if transport, storage, inspection, and return costs remain bounded.",
+      "category": "resale-spread",
+      "location": {"name": "North Harbor Industrial Edge", "lat": 25.0500, "lon": 121.0300},
+      "service_radius_km": 20,
+      "remote": false,
+      "required_skills": [],
+      "helpful_skills": ["data cleanup"],
+      "required_equipment": ["smartphone"],
+      "startup_capital": {"low": 900, "high": 1400, "currency": "USD"},
+      "weekly_hours_required": 10,
+      "monthly_revenue": {"low": 1600, "high": 2600, "currency": "USD"},
+      "monthly_cost": {"low": 900, "high": 1300, "currency": "USD"},
+      "repeatability": 0.63,
+      "legal_status": "permit_required",
+      "required_evidence_kinds": ["demand", "economics", "supply", "regulation"],
+      "execution_steps": [
+        "Verify resale, waste-handling, transport, warranty, and tax obligations.",
+        "Measure acquisition-to-sale spread on a tiny sample before holding inventory.",
+        "Model storage, failed units, returns, transport, and time-to-sale as explicit costs."
+      ],
+      "failure_modes": [
+        "Capital is trapped in slow inventory.",
+        "Transport and defective-unit costs consume the apparent spread.",
+        "Permit or waste-handling obligations change the economics."
+      ],
+      "metadata": {"synthetic_fixture": true},
+      "evidence": [
+        {"id":"nh-resale-demand","kind":"demand","claim":"Synthetic marketplace sample shows recurring buyer interest in low-cost working appliances.","source":"fixture:marketplace-f","observed_at":"2026-08-09","confidence":0.79,"locator":"fixture://marketplace-f","value":31,"unit":"buyer_inquiries","method":"observed"},
+        {"id":"nh-resale-econ","kind":"economics","claim":"Synthetic transaction sample exhibits a positive gross acquisition-resale spread before logistics and failure losses.","source":"fixture:transactions-g","observed_at":"2026-08-09","confidence":0.77,"locator":"fixture://transactions-g","value":0.42,"unit":"gross_spread_ratio","method":"observed"},
+        {"id":"nh-resale-supply","kind":"supply","claim":"Synthetic disposal-channel sample indicates recurring potential supply.","source":"fixture:disposal-channel-h","observed_at":"2026-08-07","confidence":0.73,"locator":"fixture://disposal-channel-h","value":18,"unit":"monthly_units","method":"observed"},
+        {"id":"nh-resale-reg","kind":"regulation","claim":"Synthetic rules register marks the activity as requiring local resale/waste-handling review before execution.","source":"fixture:rules-register-i","observed_at":"2026-08-14","confidence":0.88,"locator":"fixture://rules-register-i","value":"permit_required","unit":null,"method":"verified"}
+      ]
+    }
+  ]
+}

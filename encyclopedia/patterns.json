@@ -1,0 +1,47 @@
+{
+  "schema": "geomap.opportunity_patterns.v1",
+  "patterns": [
+    {
+      "id": "local-service-gap",
+      "name": "Local service gap",
+      "edge": "Demand exists locally but supply is fragmented, expensive, slow, or aimed at larger buyers.",
+      "evidence_needed": ["demand", "supply", "economics"],
+      "common_execution": ["interview buyers", "pre-sell narrow service", "measure delivery economics", "standardize repeatable work"]
+    },
+    {
+      "id": "skill-gap-arbitrage",
+      "name": "Skill scarcity / translation gap",
+      "edge": "A locally scarce skill can transform an existing asset, business process, or customer interface into something more valuable.",
+      "evidence_needed": ["demand", "economics", "regulation"],
+      "common_execution": ["identify missing capability", "show concrete before/after", "sell bounded deliverable", "build reusable workflow"]
+    },
+    {
+      "id": "geographic-resale-spread",
+      "name": "Geographic acquisition-resale spread",
+      "edge": "The same lawful good has different effective values across places or channels after transport, defects, inventory time, and transaction friction.",
+      "evidence_needed": ["demand", "supply", "economics", "regulation"],
+      "common_execution": ["sample both sides of market", "model full landed cost", "test tiny inventory", "scale only after observed net spread"]
+    },
+    {
+      "id": "asset-utilization",
+      "name": "Underused asset utilization",
+      "edge": "A locally available asset, machine, vehicle, space, dataset, or tool is idle while nearby demand pays for its output or access.",
+      "evidence_needed": ["asset", "demand", "economics", "regulation"],
+      "common_execution": ["measure idle capacity", "identify paying use", "price variable cost and wear", "sell access or output"]
+    },
+    {
+      "id": "remote-local-cost",
+      "name": "Remote income / local cost-base spread",
+      "edge": "A person can sell work into a higher-value market while producing from a lower-cost location, subject to tax, platform, labor, and payment constraints.",
+      "evidence_needed": ["demand", "price", "cost", "regulation"],
+      "common_execution": ["validate remote demand", "verify payment/tax rules", "measure acquisition cost", "protect against platform concentration"]
+    },
+    {
+      "id": "logistics-gap",
+      "name": "Logistics / time-window gap",
+      "edge": "Value is lost because supply and demand exist at different times or places and a lawful coordination/logistics layer can bridge them.",
+      "evidence_needed": ["demand", "supply", "cost", "regulation"],
+      "common_execution": ["map origin/destination", "measure frequency", "price transport and failure", "pilot one route/window"]
+    }
+  ]
+}
