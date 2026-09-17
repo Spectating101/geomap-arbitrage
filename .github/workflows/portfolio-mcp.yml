@@ -1,0 +1,59 @@
+name: Portfolio MCP cross-project proof
+on:
+  pull_request:
+    paths: ['integrations/mcp/**', '.github/workflows/portfolio-mcp.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cross-project:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Spectating101/cite-refinery
+          ref: c9559e4e217f9f266aa451008cda32c96eee544e
+          path: .mcp-runner
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Spectating101/citation-engine
+          ref: 63cc0851a087e60ad0c813314e84839bcf64e8a7
+          path: .mcp-citation
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt -e . -e .mcp-runner/integrations/portfolio-mcp
+      - run: portfolio-mcp probe --manifest integrations/mcp/manifest.json --root .
+      - name: Native GeoMap output becomes native Citation Engine input
+        run: |
+          python - <<'PY'
+          import asyncio, copy, os, sys
+          from portfolio_mcp.client import StdioConnection, invoke
+          def connection(root):
+              return StdioConnection(sys.executable, ('-m','portfolio_mcp.cli','serve','--manifest',root+'/integrations/mcp/manifest.json','--root',root), dict(os.environ))
+          geo, citation = connection('.'), connection('.mcp-citation')
+          async def call(server, tool, arguments):
+              response = await invoke(server, tool, arguments)
+              assert not response['is_error'], response
+              return response['structured_content']['result']
+          async def exercise():
+              async with asyncio.timeout(120):
+                  result = await call(geo, 'geomap_demo', {})
+                  rows = result['results']
+                  assert rows, 'Native GeoMap returned no fixture assessments'
+                  for row in rows:
+                      bundle = row['citation_engine']['bundle']
+                      verified = await call(citation, 'citation_validate_bundle', {'bundle':bundle})
+                      assert verified['valid'] and not verified['truth_certified']
+                  bad = copy.deepcopy(rows[0]['citation_engine']['bundle'])
+                  bad['fingerprint'] = 'tampered'
+                  assert not (await call(citation, 'citation_validate_bundle', {'bundle':bad}))['valid']
+                  print('PASS: actual GeoMap -> Citation Engine MCP exchange;', len(rows), 'native bundles; tamper control rejected')
+          asyncio.run(exercise())
+          PY
