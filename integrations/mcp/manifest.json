@@ -1,0 +1,33 @@
+{
+  "schema":"portfolio.mcp.manifest.v1",
+  "project":"geomap",
+  "repository":"Spectating101/geomap-arbitrage",
+  "mode":"bridge",
+  "required_files":["src/geomap_arbitrage/cli.py"],
+  "pythonpath":["src"],
+  "timeout_seconds":60,
+  "runner_source":"Spectating101/cite-refinery@c9559e4e217f9f266aa451008cda32c96eee544e:integrations/portfolio-mcp",
+  "tools":[
+    {
+      "name":"geomap_assess",
+      "description":"Evaluate supplied person/place opportunities using native gates and Citation Engine receipts. Requires explicit as_of. Not a profit or legal guarantee.",
+      "effect":"compute",
+      "input_schema":{"type":"object","properties":{"profile":{"type":"object"},"catalog":{"type":"array","items":{"type":"object"},"minItems":1,"maxItems":500},"as_of":{"type":"string","format":"date"}},"required":["profile","catalog","as_of"],"additionalProperties":false},
+      "argv":["$PYTHON","-m","geomap_arbitrage.cli","assess","--profile",{"json_file":"profile"},"--catalog",{"json_file":"catalog"},"--as-of",{"arg":"as_of"},"--json","--include-bundle"]
+    },
+    {
+      "name":"geomap_plan",
+      "description":"Build the native livelihood action plan from supplied opportunities and an explicit as_of date. Native gates remain authoritative; no external action is performed.",
+      "effect":"compute",
+      "input_schema":{"type":"object","properties":{"profile":{"type":"object"},"catalog":{"type":"array","items":{"type":"object"},"minItems":1,"maxItems":500},"as_of":{"type":"string","format":"date"}},"required":["profile","catalog","as_of"],"additionalProperties":false},
+      "argv":["$PYTHON","-m","geomap_arbitrage.cli","plan","--profile",{"json_file":"profile"},"--catalog",{"json_file":"catalog"},"--as-of",{"arg":"as_of"},"--json"]
+    },
+    {
+      "name":"geomap_demo",
+      "description":"Run fictional North Harbor fixtures with native citation bundles. Synthetic demonstration, not current market evidence.",
+      "effect":"compute",
+      "input_schema":{"type":"object","properties":{},"required":[],"additionalProperties":false},
+      "argv":["$PYTHON","-m","geomap_arbitrage.cli","demo","--json","--include-bundle"]
+    }
+  ]
+}
